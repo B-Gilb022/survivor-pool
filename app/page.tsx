@@ -12,7 +12,8 @@ export default function Home() {
         <h1 className="text-5xl font-bold tracking-wide">
           Survivor Pool Webpage
         </h1>
-
+        <br>
+        </br>
         <button
           onClick={() => router.push("/standings")}
           className="px-8 py-3 text-lg font-semibold bg-green-500 hover:bg-green-600 rounded-lg transition"
