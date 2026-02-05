@@ -29,23 +29,6 @@ const data: StandingsRow[] = [
 
 
 export default function Standings() {
-  const [dbValue, setDbValue] = useState<string>("Loading...");
-
-  useEffect(() => {
-    const fetchDbValue = async () => {
-      try {
-        const response = await fetch('/api/test-db');
-        const data = await response.json();
-        setDbValue(data.result);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setDbValue("Error fetching data");
-      }
-    };
-
-    fetchDbValue();
-  }, []);
-  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
       <Image
@@ -60,7 +43,6 @@ export default function Standings() {
       </br>
       <main>
         <div>
-          <input type="text" value={dbValue} readOnly/>
           <h2 className="text-3xl font-semibold text-center">
             Survivor 50 Pool Standings
           </h2>
