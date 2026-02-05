@@ -7,7 +7,7 @@ export function createTables() {
             ParticipantName TEXT NOT NULL,
         );
 
-        CREATE TABLE IF NOT EXISTS ParticipantsMapper (
+        CREATE TABLE IF NOT EXISTS Players (
             PlayerId INTEGER PRIMARY KEY AUTOINCREMENT,
             PlayerName TEXT NOT NULL,
             TribeName TEXT NOT NULL,
