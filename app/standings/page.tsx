@@ -1,9 +1,4 @@
-"use client";
-
 import Image from "next/image";
-
-// Test Database call
-import { useEffect, useState } from "react";
 
 type StandingsRow = {
   rank: number;
@@ -27,8 +22,25 @@ const data: StandingsRow[] = [
   { rank: 11, name: "Cara", totalPoints: 0, playersRemaining: "0/5" },
 ];
 
+type Standing = {
+  ParticipantName: string;
+  TotalPoints: number;
+  RemainingPlayers: string;
+}
 
-export default function Standings() {
+async function getStandings(): Promise<Standing[]> {
+  const res = await fetch("http://localhost:3000/api/standings-get", { cache: "no-store" });
+  
+  if (!res.ok) {
+    throw new Error("Failed to fetch standings");
+  }
+
+  return res.json();
+}
+
+export default async function Standings() {
+  const standings = await getStandings();
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
       <Image
@@ -65,14 +77,14 @@ export default function Standings() {
             </thead>
 
             <tbody>
-              {data.map((row, index) => (
+              {standings.map((row, index) => (
                 <tr key={index} className="border-b border-l border-r">
                   <td className="px-8 py-2">
-                    {row.rank === 1 ? "🥇" : row.rank === 2 ? "🥈" : row.rank === 3 ? "🥉" : row.rank}
+                    {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}
                   </td>
-                  <td className="px-8 py-2">{row.name}</td>
-                  <td className="px-8 py-2">{row.totalPoints}</td>
-                  <td className="px-8 py-2">{row.playersRemaining}</td>
+                  <td className="px-8 py-2">{row.ParticipantName}</td>
+                  <td className="px-8 py-2">{row.TotalPoints}</td>
+                  <td className="px-8 py-2">{row.RemainingPlayers}</td>
                 </tr>
               ))}
             </tbody>

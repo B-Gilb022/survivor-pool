@@ -132,7 +132,7 @@ export function seedDatabase() {
     insertMapping.run(participantIds["Cara"], playerIds["Aysha::47"], 0, 0, 0, 47);
     insertMapping.run(participantIds["Cara"], playerIds["Sue::47"], 0, 0, 0, 47);
 
-        // Season 48 Data
+    // Season 48 Data
 
     const players_s48 = [
         {name : "Stephanie", tribe: "Vula", season: 48, points: 6, eliminated: 1},
@@ -245,5 +245,177 @@ export function seedDatabase() {
     insertMapping.run(participantIds["Cara"], playerIds["Thomas::48"], 0, 0, 0, 48);
     insertMapping.run(participantIds["Cara"], playerIds["Shauhin::48"], 0, 0, 0, 48);
 
-    // CONTINUE ADDING INITIAL DATA (Season 49)
+    // Season 49
+
+    const players_s49 = [
+        {name : "Alex", tribe: "Kele", season: 49, points: 119, eliminated: 1},
+        {name : "Annie", tribe: "Kele", season: 49, points: 6, eliminated: 1},
+        {name : "Jake", tribe: "Kele", season: 49, points: 23, eliminated: 1},
+        {name : "Jason", tribe: "Hina", season: 49, points: 35, eliminated: 1},
+        {name : "Jawan", tribe: "Uli", season: 49, points: 111, eliminated: 1},
+        {name : "Jeremiah", tribe: "Kele", season: 49, points: 17, eliminated: 1},
+        {name : "Kristina", tribe: "Hina", season: 49, points: 140, eliminated: 1},
+        {name : "Matt", tribe: "Hina", season: 49, points: 33, eliminated: 1},
+        {name : "MC", tribe: "Hina", season: 49, points: 91, eliminated: 1},
+        {name : "Nate", tribe: "Uli", season: 49, points: 73, eliminated: 1},
+        {name : "Nicole", tribe: "Kele", season: 49, points: 5, eliminated: 1},
+        {name : "Rizo", tribe: "Uli", season: 49, points: 169, eliminated: 1},
+        {name : "Sage", tribe: "Uli", season: 49, points: 177, eliminated: 0},
+        {name : "Savannah", tribe: "Uli", season: 49, points: 239, eliminated: 0},
+        {name : "Shannon", tribe: "Uli", season: 49, points: 60, eliminated: 1},
+        {name : "Sophi", tribe: "Kele", season: 49, points: 204, eliminated: 0},
+        {name : "Sophie", tribe: "Hina", season: 49, points: 144, eliminated: 1},
+        {name : "Steven", tribe: "Hina", season: 49, points: 181, eliminated: 1}
+    ];
+
+    for (const player of players_s49) {
+        const result = insertPlayer.run(player.name, player.tribe, player.season, player.points, player.eliminated);
+        playerIds[`${player.name}::${player.season}`] = Number(result.lastInsertRowid);
+    }
+
+    insertPoints.run(playerIds["Alex::49"], "Alex", 7, 1, 1, 0, 2, 44, 0, 3, 1);
+    insertPoints.run(playerIds["Annie::49"], "Annie", 0, 0, 0, 0, 0, 6, 0, 0, 0);
+    insertPoints.run(playerIds["Jake::49"], "Jake", 1, 0, 0, 0, 0, 18, 0, 0, 0);
+    insertPoints.run(playerIds["Jason::49"], "Jason", 3, 0, 0, 0, 0, 10, 0, 2, 0);
+    insertPoints.run(playerIds["Jawan::49"], "Jawan", 8, 1, 1, 0, 1, 46, 0, 2, 0);
+    insertPoints.run(playerIds["Jeremiah::49"], "Jeremiah", 1, 0, 0, 0, 0, 12, 0, 0, 0);
+    insertPoints.run(playerIds["Kristina::49"], "Kristina", 11, 1, 1, 0, 2, 35, 0, 5, 1);
+    insertPoints.run(playerIds["Matt::49"], "Matt", 2, 0, 0, 0, 0, 13, 0, 2, 0);
+    insertPoints.run(playerIds["MC::49"], "MC", 6, 1, 0, 0, 0, 26, 0, 5, 1);
+    insertPoints.run(playerIds["Nate::49"], "Nate", 5, 0, 0, 0, 1, 23, 0, 3, 1);
+    insertPoints.run(playerIds["Nicole::49"], "Nicole", 0, 0, 0, 0, 0, 5, 0, 0, 0);
+    insertPoints.run(playerIds["Rizo::49"], "Rizo", 12, 1, 0, 0, 3, 69, 0, 3, 1);
+    insertPoints.run(playerIds["Sage::49"], "Sage", 13, 1, 1, 0, 3, 67, 0, 4, 0);
+    insertPoints.run(playerIds["Savannah::49"], "Savannah", 13, 1, 1, 0, 4, 84, 4, 3, 1);
+    insertPoints.run(playerIds["Shannon::49"], "Shannon", 4, 0, 0, 0, 0, 20, 0, 4, 0);
+    insertPoints.run(playerIds["Sophi::49"], "Sophi", 13, 2, 2, 0, 0, 79, 1, 1, 1);
+    insertPoints.run(playerIds["Sophie::49"], "Sophie", 9, 0, 0, 0, 3, 34, 2, 5, 1);
+    insertPoints.run(playerIds["Steven::49"], "Steven", 10, 1, 1, 0, 4, 61, 2, 4, 0);
+
+    insertMapping.run(participantIds["Joanne"], playerIds["MC::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Joanne"], playerIds["Jake::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Joanne"], playerIds["Sophi::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Joanne"], playerIds["Rizo::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Joanne"], playerIds["Shannon::49"], 0, 0, 0, 49);
+    
+    insertMapping.run(participantIds["Dan"], playerIds["Steven::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Dan"], playerIds["Nate::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Dan"], playerIds["Sophie::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Dan"], playerIds["Jawan::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Dan"], playerIds["Shannon::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Ivy"], playerIds["Savannah::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Ivy"], playerIds["MC::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Ivy"], playerIds["Sophi::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Ivy"], playerIds["Rizo::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Ivy"], playerIds["Jason::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Gavin"], playerIds["Jawan::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Gavin"], playerIds["Shannon::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Gavin"], playerIds["Matt::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Gavin"], playerIds["Sophi::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Gavin"], playerIds["Jake::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Geoff"], playerIds["Savannah::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Geoff"], playerIds["MC::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Geoff"], playerIds["Jawan::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Geoff"], playerIds["Alex::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Geoff"], playerIds["Rizo::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Ben"], playerIds["Savannah::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Ben"], playerIds["Sophi::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Ben"], playerIds["Shannon::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Ben"], playerIds["Rizo::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Ben"], playerIds["Alex::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Cam"], playerIds["Savannah::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Cam"], playerIds["Rizo::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Cam"], playerIds["Sophi::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Cam"], playerIds["Kristina::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Cam"], playerIds["Jawan::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Nanny"], playerIds["Rizo::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Nanny"], playerIds["Jake::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Nanny"], playerIds["Jeremiah::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Nanny"], playerIds["Annie::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Nanny"], playerIds["Jason::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Papa"], playerIds["Savannah::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Papa"], playerIds["Jake::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Papa"], playerIds["Matt::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Papa"], playerIds["Sophi::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Papa"], playerIds["Kristina::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Cal"], playerIds["Sophi::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Cal"], playerIds["MC::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Cal"], playerIds["Jason::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Cal"], playerIds["Jeremiah::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Cal"], playerIds["Shannon::49"], 0, 0, 0, 49);
+
+    insertMapping.run(participantIds["Cara"], playerIds["Savannah::49"], 1, 0, 0, 49);
+    insertMapping.run(participantIds["Cara"], playerIds["Rizo::49"], 0, 1, 0, 49);
+    insertMapping.run(participantIds["Cara"], playerIds["Sophi::49"], 0, 0, 1, 49);
+    insertMapping.run(participantIds["Cara"], playerIds["MC::49"], 0, 0, 0, 49);
+    insertMapping.run(participantIds["Cara"], playerIds["Alex::49"], 0, 0, 0, 49);
+
+    // Season 50
+
+    const players_s50 = [
+        {name : "Colby", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Genevieve", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Rizo", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Angelina", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Q", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Stephanie", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Kyle", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Aubry", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
+        {name : "Joe", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Savannah", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Christian", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Cirie", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Ozzy", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Emily", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Rick", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Jenna", tribe: "Cila", season: 50, points: 0, eliminated: 0},
+        {name : "Jonathan", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Dee", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Mike", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Kamilla", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Charlie", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Tiffany", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Coach", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
+        {name : "Chrissy", tribe: "Kalo", season: 50, points: 0, eliminated: 0}
+    ];
+
+    for (const player of players_s50) {
+        const result = insertPlayer.run(player.name, player.tribe, player.season, player.points, player.eliminated);
+        playerIds[`${player.name}::${player.season}`] = Number(result.lastInsertRowid);
+    }
+
+    insertPoints.run(playerIds["Colby::50"], "Colby", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Genevieve::50"], "Genevieve", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Rizo::50"], "Rizo", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Angelina::50"], "Angelina", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Q::50"], "Q", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Stephanie::50"], "Stephanie", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Kyle::50"], "Kyle", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Aubry::50"], "Aubry", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Joe::50"], "Joe", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Savannah::50"], "Savannah", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Christian::50"], "Christian", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Cirie::50"], "Cirie", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Ozzy::50"], "Ozzy", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Emily::50"], "Emily", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Rick::50"], "Rick", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Jenna::50"], "Jenna", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Jonathan::50"], "Jonathan", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Dee::50"], "Dee", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Mike::50"], "Mike", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Kamilla::50"], "Kamilla", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Charlie::50"], "Charlie", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Tiffany::50"], "Tiffany", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Coach::50"], "Coach", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    insertPoints.run(playerIds["Chrissy::50"], "Chrissy", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+    // Add in Player Choices for Season 50 here
 }

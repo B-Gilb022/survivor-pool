@@ -4,7 +4,7 @@ export function createTables() {
     db.exec(`
         CREATE TABLE IF NOT EXISTS Participants (
             ParticipantId INTEGER PRIMARY KEY AUTOINCREMENT,
-            ParticipantName TEXT NOT NULL,
+            ParticipantName TEXT NOT NULL
         );
 
         CREATE TABLE IF NOT EXISTS Players (
@@ -18,16 +18,19 @@ export function createTables() {
 
         CREATE TABLE IF NOT EXISTS ParticipantsMapper (
             MapperId INTEGER PRIMARY KEY AUTOINCREMENT,
-            FOREIGN KEY (ParticipantId) REFERENCES Participants(ParticipantId),
-            FOREIGN KEY (PlayerId) REFERENCES Participants(PlayerId),
+            ParticipantId INTEGER NOT NULL,
+            PlayerId INTEGER NOT NULL,
             First BOOLEAN,
             Second BOOLEAN,
             Third BOOLEAN,
-            Season INTEGER
+            Season INTEGER,
+
+            FOREIGN KEY (ParticipantId) REFERENCES Participants(ParticipantId),
+            FOREIGN KEY (PlayerId) REFERENCES Players(PlayerId)
         );
 
         CREATE TABLE IF NOT EXISTS PlayerPoints (
-            FOREIGN KEY (PlayerId) REFERENCES Participants(PlayerId),
+            PlayerId INTEGER NOT NULL,
             PlayerName TEXT NOT NULL,
             RemainInTheGamePts INTEGER,
             FoundAdvantagePts INTEGER,
@@ -37,7 +40,9 @@ export function createTables() {
             ConfessionalPts INTEGER,
             IndividualImmunityPts INTEGER,
             TribalImmunityPts INTEGER,
-            TribalRewardPts INTEGER
+            TribalRewardPts INTEGER,
+
+            FOREIGN KEY (PlayerId) REFERENCES Players(PlayerId)
         );
 
     `);
