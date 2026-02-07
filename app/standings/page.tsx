@@ -1,27 +1,5 @@
 import Image from "next/image";
 
-type StandingsRow = {
-  rank: number;
-  name: string;
-  totalPoints: number;
-  playersRemaining: string;
-}
-
-
-const data: StandingsRow[] = [
-  { rank: 1, name: "Ben", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 2, name: "Cam", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 3, name: "Geoff", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 4, name: "Dan", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 5, name: "Joanne", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 6, name: "Ivy", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 7, name: "Gavin", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 8, name: "Nanny", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 9, name: "Papa", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 10, name: "Cal", totalPoints: 0, playersRemaining: "0/5" },
-  { rank: 11, name: "Cara", totalPoints: 0, playersRemaining: "0/5" },
-];
-
 type Standing = {
   ParticipantName: string;
   TotalPoints: number;
