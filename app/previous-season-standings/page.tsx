@@ -6,7 +6,7 @@ type Standing = {
   RemainingPlayers: string;
 }
 
-const SEASON = 49;
+const SEASON = 47; // NEED TO MAKE THIS A DROPDOWN LIST TO SELECT SEASON
 
 async function getStandings(): Promise<Standing[]> {
   const res = await fetch(`http://localhost:3000/api/standings-get/${SEASON}`, { cache: "no-store" });
@@ -36,7 +36,7 @@ export default async function Standings() {
       <main>
         <div>
           <h2 className="text-3xl font-semibold text-center">
-            Survivor 50 Pool Standings
+            Survivor Pool Standings
           </h2>
 
           <table className="mt-8 border-collapse border border-gray-600 text-lg text-center">

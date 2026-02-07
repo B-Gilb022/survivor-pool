@@ -20,6 +20,14 @@ export default function Home() {
         >
           View Standings
         </button>
+        <br>
+        </br>
+        <button
+          onClick={() => router.push("/previous-season-standings")}
+          className="px-8 py-3 text-lg font-semibold bg-blue-300 hover:bg-blue-400 rounded-lg transition"
+        >
+          View Previous Season Standings
+        </button>
       </div>
     </main>
   );

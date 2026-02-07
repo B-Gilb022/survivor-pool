@@ -2,8 +2,25 @@
 import db from "@/lib/db/database";
 import { initializeDatabase } from "@/lib/db/init";
 
-export async function GET() {
+type RouteParams = {
+    params: {
+        season: string;
+    };
+};
+
+
+export async function GET(request: Request, { params }: RouteParams) {
     initializeDatabase();
+
+    const { season } = await params;
+    const seasonNumber = Number(season);
+
+    if (Number.isNaN(seasonNumber)) {
+        return new Response(
+            JSON.stringify({ error: "Invalid season parameter" }),
+            { status: 400 }
+        );
+    }
 
     const standings = db.prepare(`
         SELECT 
@@ -24,10 +41,10 @@ export async function GET() {
         LEFT JOIN Players
             ON ParticipantsMapper.PlayerId = Players.PlayerId
         WHERE TotalPoints IS NOT NULL
-        AND ParticipantsMapper.Season = 49
+        AND ParticipantsMapper.Season = ?
         GROUP BY ParticipantName
         ORDER BY TotalPoints DESC
-    `).all();
+    `).all(season);
 
     return Response.json(standings);
 }
