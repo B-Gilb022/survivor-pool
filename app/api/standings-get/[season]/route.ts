@@ -15,6 +15,8 @@ export async function GET(request: Request, { params }: RouteParams) {
     const { season } = await params;
     const seasonNumber = Number(season);
 
+    console.log("Received season parameter:", season, "Parsed season number:", seasonNumber);
+
     if (Number.isNaN(seasonNumber)) {
         return new Response(
             JSON.stringify({ error: "Invalid season parameter" }),

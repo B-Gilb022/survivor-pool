@@ -1,25 +1,35 @@
 import Image from "next/image";
+import SeasonSelector from "./season-selector";
 
 type Standing = {
   ParticipantName: string;
   TotalPoints: number;
   RemainingPlayers: string;
-}
+};
 
-const SEASON = 47; // NEED TO MAKE THIS A DROPDOWN LIST TO SELECT SEASON
+type PageProps = {
+  params: {
+    season: number;
+  };
+};
 
-async function getStandings(): Promise<Standing[]> {
-  const res = await fetch(`http://localhost:3000/api/standings-get/${SEASON}`, { cache: "no-store" });
+// NEED TO MAKE THIS A DROPDOWN LIST TO SELECT SEASON
+
+export default async function Standings({ params }: PageProps) {
+  const { season } = await params;
+  const seasonNumber = Number(season);
+
+  console.log("season:", season);
+
+  const [standingRes, seasonsRes] = await Promise.all([
+    fetch(`http://localhost:3000/api/standings-get/${seasonNumber}`, { cache: "no-store" }),
+    fetch(`http://localhost:3000/api/seasons-get`, { cache: "force-cache" })
+  ]);
+
+  const standings: Standing[] = await standingRes.json();
+  const seasons: number[] = await seasonsRes.json();
+
   
-  if (!res.ok) {
-    throw new Error("Failed to fetch standings");
-  }
-
-  return res.json();
-}
-
-export default async function Standings() {
-  const standings = await getStandings();
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
@@ -35,8 +45,14 @@ export default async function Standings() {
       </br>
       <main>
         <div>
+
+          <SeasonSelector
+            seasons={seasons}
+            currentSeason={Number(season)}
+          />
+
           <h2 className="text-3xl font-semibold text-center">
-            Survivor Pool Standings
+            Survivor {season} Pool Standings
           </h2>
 
           <table className="mt-8 border-collapse border border-gray-600 text-lg text-center">
