@@ -1,7 +1,9 @@
 import Image from "next/image";
 import SeasonSelector from "./season-selector";
+import Link from "next/link";
 
 type Standing = {
+  ParticipantId: number;
   ParticipantName: string;
   TotalPoints: number;
   RemainingPlayers: string;
@@ -12,8 +14,6 @@ type PageProps = {
     season: number;
   };
 };
-
-// NEED TO MAKE THIS A DROPDOWN LIST TO SELECT SEASON
 
 export default async function Standings({ params }: PageProps) {
   const { season } = await params;
@@ -34,17 +34,24 @@ export default async function Standings({ params }: PageProps) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
       <Image
-        src="/survivor-logo-png-transparent.png"
+        src="/Survivor-Logo.png"
         alt="Survivor Logo"
-        width={200}
-        height={100}
-        className="fixed absolute top-0 right-4 w-75 h-75"
+        width={600}
+        height={600}
+        className="absolute top-4 right-0 w-150 h-auto"
         priority
       />
       <br>
       </br>
       <main>
         <div>
+
+          <Link
+              href="/"
+              className="absolute top-4 left-4 text-gray-300 hover:text-white transition-colors duration-300"
+            >
+                &larr; Back to Homepage
+          </Link>
 
           <SeasonSelector
             seasons={seasons}
@@ -78,13 +85,26 @@ export default async function Standings({ params }: PageProps) {
                   <td className="px-8 py-2">
                     {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}
                   </td>
-                  <td className="px-8 py-2">{row.ParticipantName}</td>
+                  <td className="px-8 py-2 hover:underline">
+                    <Link
+                      href={`/participant/${row.ParticipantId}?season=${seasonNumber}&name=${encodeURIComponent(row.ParticipantName)}`}
+                    >
+                      {row.ParticipantName}
+                    </Link>
+                  </td>
                   <td className="px-8 py-2">{row.TotalPoints}</td>
                   <td className="px-8 py-2">{row.RemainingPlayers}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+
+          <Link
+            href={`/player-points/${seasonNumber}`}
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 rounded-lg bg-indigo-600 px-6 py-3 text-lg font-semibold text-white hover:bg-indigo-500"
+          >
+            📊 View Player Points Breakdown
+          </Link>
         </div>
       </main>
     </div>
