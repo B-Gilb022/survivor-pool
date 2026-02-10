@@ -30,13 +30,34 @@ export default async function Standings() {
         alt="Survivor Logo"
         width={600}
         height={600}
-        className="absolute top-4 right-0 w-150 h-auto"
+        className="absolute top-4 right-0 w-32 sm:w-40 md:w-48 lg:w-100 h-auto"
         priority
       />
       <br>
       </br>
       <main>
         <div>
+
+          <div className="hidden xl:block absolute bottom-0 left-0">
+            <Image
+              src="/Torch-1.gif"
+              alt="Left Torch Animation"
+              width={200}
+              height={800}
+              className="h-[70vh] w-auto pointer-events-none select-none"
+            />
+          </div>
+
+          <div className="hidden xl:block absolute bottom-0 right-0">
+            <Image
+              src="/Torch-1.gif"
+              alt="Right Torch Animation"
+              width={200}
+              height={800}
+              className="h-[70vh] w-auto pointer-events-none select-none"
+            />
+          </div>
+
 
           <Link
             href="/"
@@ -46,7 +67,7 @@ export default async function Standings() {
           </Link>
 
           <h2 className="text-3xl font-semibold text-center">
-            Survivor 50 Pool Standings
+            Survivor {CURRENT_SEASON} Pool Standings
           </h2>
 
           <table className="mt-8 border-collapse border border-gray-600 text-lg text-center">

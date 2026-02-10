@@ -45,7 +45,7 @@ export default async function ParticipantPage({ params, searchParams }: Particip
                     </thead>
                     <tbody>
                         {data.map((player) => (
-                            <tr key={player.PlayerId} className={`border-b ${player.Eliminated ? 'bg-red-600/60' : ''}`}>
+                            <tr className={`border-b ${player.Eliminated ? 'bg-red-600/60' : ''}`}>
                                 <td className="px-8 py-2">
                                     {player.First ? "🥇" : player.Second ? "🥈" : player.Third ? "🥉" : ""}
                                 </td>

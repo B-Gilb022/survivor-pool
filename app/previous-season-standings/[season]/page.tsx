@@ -15,11 +15,11 @@ type PageProps = {
   };
 };
 
+const CURRENT_SEASON = 49;
+
 export default async function Standings({ params }: PageProps) {
   const { season } = await params;
   const seasonNumber = Number(season);
-
-  console.log("season:", season);
 
   const [standingRes, seasonsRes] = await Promise.all([
     fetch(`http://localhost:3000/api/standings-get/${seasonNumber}`, { cache: "no-store" }),
@@ -38,13 +38,33 @@ export default async function Standings({ params }: PageProps) {
         alt="Survivor Logo"
         width={600}
         height={600}
-        className="absolute top-4 right-0 w-150 h-auto"
+        className="absolute top-4 right-0 w-32 sm:w-40 md:w-48 lg:w-100 h-auto"
         priority
       />
       <br>
       </br>
       <main>
         <div>
+
+          <div className="hidden xl:block absolute bottom-0 left-0">
+            <Image
+              src="/Torch-1.gif"
+              alt="Left Torch Animation"
+              width={200}
+              height={800}
+              className="h-[70vh] w-auto pointer-events-none select-none"
+            />
+          </div>
+
+          <div className="hidden xl:block absolute bottom-0 right-0">
+            <Image
+              src="/Torch-1.gif"
+              alt="Right Torch Animation"
+              width={200}
+              height={800}
+              className="h-[70vh] w-auto pointer-events-none select-none"
+            />
+          </div>
 
           <Link
               href="/"
@@ -54,7 +74,7 @@ export default async function Standings({ params }: PageProps) {
           </Link>
 
           <SeasonSelector
-            seasons={seasons}
+            seasons={seasons.splice(seasons.indexOf(CURRENT_SEASON) + 1)}
             currentSeason={Number(season)}
           />
 

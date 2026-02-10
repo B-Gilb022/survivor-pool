@@ -25,14 +25,14 @@ export default async function PlayerPointsPage({ params }: { params: Promise<{ s
     const playerPoints: PlayerPoint[] = await res.json();
     
     return (
-        <div className="min-h-screen bg-gray-800 text-white p-8">
+        <div className="min-h-screen min-w-[1500px] bg-gray-800 text-white p-8">
             <BackButton />
             
             <h1 className="mb-6 text-3xl font-bold items-center justify-center text-center">
                 Player Points Breakdown - Season {seasonNumber}
             </h1>
 
-            <table className="min-w-full border-collapse border border-gray-300 text-lg ">
+            <table className="min-w-full border-collapse border border-gray-800 text-lg ">
                 <thead>
                     <tr className="bg-gray-600">
                         <th className="border border-gray-300 px-4 py-2">Player Name</th>
