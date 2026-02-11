@@ -22,8 +22,8 @@ export default async function Standings({ params }: PageProps) {
   const seasonNumber = Number(season);
 
   const [standingRes, seasonsRes] = await Promise.all([
-    fetch(`http://localhost:3000/api/standings-get/${seasonNumber}`, { cache: "no-store" }),
-    fetch(`http://localhost:3000/api/seasons-get`, { cache: "force-cache" })
+    fetch(`${process.env.PRODUCTION_URL}/api/standings-get/${seasonNumber}`, { cache: "no-store" }),
+    fetch(`${process.env.PRODUCTION_URL}/api/seasons-get`, { cache: "force-cache" })
   ]);
 
   const standings: Standing[] = await standingRes.json();

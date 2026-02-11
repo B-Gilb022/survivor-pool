@@ -21,7 +21,7 @@ export default async function PlayerPointsPage({ params }: { params: Promise<{ s
     const { season } = await params;
     const seasonNumber = Number(season);
 
-    const res = await fetch(`http://localhost:3000/api/player-points-get/${seasonNumber}`, { cache: "no-store" });
+    const res = await fetch(`${process.env.PRODUCTION_URL}/api/player-points-get/${seasonNumber}`, { cache: "no-store" });
     const playerPoints: PlayerPoint[] = await res.json();
     
     return (

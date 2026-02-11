@@ -22,7 +22,7 @@ export default async function ParticipantPage({ params, searchParams }: Particip
     const seasonNumber = season ? Number(season) : null;
     const participantIdNumber = Number(participantId);
 
-    const res = await fetch(`http://localhost:3000/api/participant-players-get/${participantIdNumber}?season=${seasonNumber ?? ''}`, { cache: "no-store" });
+    const res = await fetch(`${process.env.PRODUCTION_URL}/api/participant-players-get/${participantIdNumber}?season=${seasonNumber ?? ''}`, { cache: "no-store" });
 
     const data: Player[] = await res.json();
 

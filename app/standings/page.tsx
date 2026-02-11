@@ -11,7 +11,7 @@ type Standing = {
 const CURRENT_SEASON = 49;
 
 async function getStandings(): Promise<Standing[]> {
-  const res = await fetch(`http://localhost:3000/api/standings-get/${CURRENT_SEASON}`, { cache: "no-store" });
+  const res = await fetch(`${process.env.PRODUCTION_URL}/api/standings-get/${CURRENT_SEASON}`, { cache: "no-store" });
   
   if (!res.ok) {
     throw new Error("Failed to fetch standings");
