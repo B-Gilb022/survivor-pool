@@ -1,6 +1,17 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+type Entry = {
+  player: {
+    playerName: string;
+    totalPoints: number;
+    eliminated: boolean;
+  };
+  first: boolean;
+  second: boolean;
+  third: boolean;
+};
+
 export async function GET(req: NextRequest, context: { params: Promise<{ participantId: string }> }) {
     
     const { participantId } = await context.params;
@@ -34,7 +45,7 @@ export async function GET(req: NextRequest, context: { params: Promise<{ partici
         },
     });
 
-    const data = raw.map((entry) => ({
+    const data = raw.map((entry: Entry) => ({
         playerName: entry.player.playerName,
         totalPoints: entry.player.totalPoints,
         eliminated: entry.player.eliminated,
