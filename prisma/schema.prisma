@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Participant {
+  participantId Int @id @default(autoincrement())
+  participantName String
+
+  mappings ParticipantsMapper[]
+}
+
+model Player {
+  playerId Int @id @default(autoincrement())
+  playerName String
+  tribeName String
+  season Int
+  totalPoints Int
+  eliminated Boolean
+
+  mappings ParticipantsMapper[]
+  points PlayerPoints[]
+}
+
+model ParticipantsMapper {
+  mapperid Int @id @default(autoincrement())
+
+  participantId Int
+  playerId Int
+  season Int
+
+  first Boolean
+  second Boolean
+  third Boolean
+
+  participant Participant @relation(fields: [participantId], references: [participantId])
+  player Player @relation(fields: [playerId], references: [playerId])
+}
+
+model PlayerPoints {
+  id Int @id @default(autoincrement())
+
+  playerId Int
+  playerName String
+  season Int
+
+  remainInTheGamePts Int
+  foundAdvantagePts Int
+  usedAdvantagePts Int
+  shotInTheDarkPts Int
+  individualRewardPts Int
+  confessionalPts Int
+  individualImmunityPts Int
+  tribalImmunityPts Int
+  tribalRewardPts Int
+
+  player Player @relation(fields: [playerId], references: [playerId])
+}

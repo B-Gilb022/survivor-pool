@@ -1,6 +1,5 @@
 
-import db from "@/lib/db/database";
-import { initializeDatabase } from "@/lib/db/init";
+import { prisma } from "@/lib/prisma";
 
 type RouteParams = {
     params: {
@@ -9,11 +8,29 @@ type RouteParams = {
 };
 
 
-export async function GET(request: Request, { params }: RouteParams) {
-    initializeDatabase();
-
+export async function GET(_: Request, { params }: RouteParams) {
     const { season } = await params;
     const seasonNumber = Number(season);
+
+    // Podium Placement Set-up
+    let firstPlace = "";
+    let secondPlace = "";
+    let thirdPlace = "";
+    if (seasonNumber === 47){
+        firstPlace = "Rachel"
+        secondPlace = "Sam"
+        thirdPlace = "Sue"
+    }
+    else if (seasonNumber === 48){
+        firstPlace = "Kyle"
+        secondPlace = "Eva"
+        thirdPlace = "Joe"
+    }
+    else if (seasonNumber === 49){
+        firstPlace = "Savannah"
+        secondPlace = "Sophi"
+        thirdPlace = "Sage"
+    }
 
     if (Number.isNaN(seasonNumber)) {
         return new Response(
@@ -22,30 +39,56 @@ export async function GET(request: Request, { params }: RouteParams) {
         );
     }
 
-    const standings = db.prepare(`
-        SELECT 
-            Participants.ParticipantId,
-            ParticipantName,
-            SUM(TotalPoints) +
-			SUM(
-				CASE WHEN First = 1 AND Players.PlayerName = 'Savannah' THEN 75 ELSE 0 END +
-				CASE WHEN Second = 1 AND Players.PlayerName = 'Sophi' THEN 50 ELSE 0 END +
-				CASE WHEN Third = 1 AND Players.PlayerName = 'Sage' THEN 50 ELSE 0 END +
-				CASE WHEN First = 1 AND (Players.PlayerName = 'Sophi' OR Players.PlayerName = 'Sage') THEN 30 ELSE 0 END +
-				CASE WHEN Second = 1 AND (Players.PlayerName = 'Savannah' OR Players.PlayerName = 'Sage') THEN 30 ELSE 0 END +
-				CASE WHEN Third = 1 AND (Players.PlayerName = 'Savannah' OR Players.PlayerName = 'Sophi') THEN 30 ELSE 0 END
-			) AS TotalPoints,
-            CONCAT(SUM(CASE WHEN Eliminated = 0 THEN 1 ELSE 0 END),'/',COUNT(Eliminated)) AS RemainingPlayers
-        FROM ParticipantsMapper
-        LEFT JOIN Participants
-            ON ParticipantsMapper.ParticipantId = Participants.ParticipantId
-        LEFT JOIN Players
-            ON ParticipantsMapper.PlayerId = Players.PlayerId
-        WHERE TotalPoints IS NOT NULL
-        AND ParticipantsMapper.Season = ?
-        GROUP BY ParticipantName
-        ORDER BY TotalPoints DESC
-    `).all(season);
+    const rows = await prisma.participantsMapper.findMany({
+        where: {
+        season: seasonNumber,
+        },
+        include: {
+            participant: true,
+            player: true,
+        },
+    });
+
+    const standingsMap = new Map<number, {
+        participantId: number;
+        participantName: string;
+        totalPoints: number;
+        remaining: number;
+        totalPlayers: number;
+    }>();
+
+    for (const row of rows) {
+        const bonus =
+        (row.first && row.player.playerName === firstPlace ? 75 : 0) +
+        (row.second && row.player.playerName === secondPlace ? 50 : 0) +
+        (row.third && row.player.playerName === thirdPlace ? 50 : 0) +
+        (row.first && [secondPlace, thirdPlace].includes(row.player.playerName) ? 30 : 0) +
+        (row.second && [firstPlace, thirdPlace].includes(row.player.playerName) ? 30 : 0) +
+        (row.third && [firstPlace, secondPlace].includes(row.player.playerName) ? 30 : 0);
+
+        const current = standingsMap.get(row.participantId) ?? {
+        participantId: row.participantId,
+        participantName: row.participant.participantName,
+        totalPoints: 0,
+        remaining: 0,
+        totalPlayers: 0,
+        };
+
+        current.totalPoints += row.player.totalPoints + bonus;
+        current.totalPlayers += 1;
+        if (!row.player.eliminated) current.remaining += 1;
+
+        standingsMap.set(row.participantId, current);
+    }
+
+    const standings = Array.from(standingsMap.values())
+        .map((p) => ({
+        ParticipantId: p.participantId,
+        ParticipantName: p.participantName,
+        TotalPoints: p.totalPoints,
+        RemainingPlayers: `${p.remaining}/${p.totalPlayers}`,
+        }))
+        .sort((a, b) => b.TotalPoints - a.TotalPoints);
 
     return Response.json(standings);
 }
