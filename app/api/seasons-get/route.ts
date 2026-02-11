@@ -1,8 +1,5 @@
 import { prisma } from "@/lib/prisma";
 
-type SeasonRow = {
-  Season: number;
-};
 
 export async function GET() {
 

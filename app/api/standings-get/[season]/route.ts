@@ -1,15 +1,10 @@
 
 import { prisma } from "@/lib/prisma";
-
-type RouteParams = {
-    params: {
-        season: string;
-    };
-};
+import { NextRequest } from "next/server";
 
 
-export async function GET(_: Request, { params }: RouteParams) {
-    const { season } = await params;
+export async function GET(_: NextRequest, context: { params: Promise<{ season: string }> }) {
+    const { season } = await context.params;
     const seasonNumber = Number(season);
 
     // Podium Placement Set-up
