@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function GET(req: NextRequest, context: { params: Promise<{ participantId: string }> }) {
+    
     const { participantId } = await context.params;
     const participantIdNumber = Number(participantId);
     const { searchParams } = new URL(req.url);
