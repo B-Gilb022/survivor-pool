@@ -1,8 +1,25 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
+type PlayerPoint = {
+    player: {
+        playerId: number,
+        playerName: string,
+        totalPoints: number,
+        eliminated: boolean,
+    }
+    remainInTheGamePts: number,
+    foundAdvantagePts: number,
+    usedAdvantagePts: number,
+    shotInTheDarkPts: number,
+    individualRewardPts: number,
+    confessionalPts: number,
+    individualImmunityPts: number,
+    tribalImmunityPts: number,
+    tribalRewardPts: number,
+}
 
-export async function GET(_: Request, context: { params: Promise<{ season: string }> }) {
+export async function GET(_: NextRequest, context: { params: Promise<{ season: string }> }) {
     const { season } = await context.params;
     const seasonNumber = Number(season);
 
@@ -31,7 +48,7 @@ export async function GET(_: Request, context: { params: Promise<{ season: strin
         },
     });
 
-    const playerPoints = raw.map(p => ({
+    const playerPoints = raw.map((p: PlayerPoint) => ({
         playerId: p.player.playerId,
         playerName: p.player.playerName,
         remainInTheGamePts: p.remainInTheGamePts,

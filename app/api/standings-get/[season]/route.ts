@@ -2,6 +2,14 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
+type Standing = {
+    participantId: number,
+    participantName: string,
+    totalPoints: number,
+    remaining: number,
+    totalPlayers: number,
+}
+
 
 export async function GET(_: NextRequest, context: { params: Promise<{ season: string }> }) {
     const { season } = await context.params;
@@ -77,7 +85,7 @@ export async function GET(_: NextRequest, context: { params: Promise<{ season: s
     }
 
     const standings = Array.from(standingsMap.values())
-        .map((p) => ({
+        .map((p: Standing) => ({
         ParticipantId: p.participantId,
         ParticipantName: p.participantName,
         TotalPoints: p.totalPoints,

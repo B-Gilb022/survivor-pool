@@ -1,5 +1,8 @@
 import { prisma } from "@/lib/prisma";
 
+type Season = {
+    season: number
+}
 
 export async function GET() {
 
@@ -13,5 +16,5 @@ export async function GET() {
     },
     });
 
-    return Response.json(seasons.map(s => s.season));
+    return Response.json(seasons.map((s: Season) => s.season));
 }
