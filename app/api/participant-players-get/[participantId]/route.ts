@@ -16,17 +16,20 @@ export async function GET(req: NextRequest, context: { params: Promise<{ partici
 
     const raw = await prisma.participantsMapper.findMany({
         where: {
-        participantId: participantIdNumber,
-        season: season,
+            participantId: participantIdNumber,
+            season: season,
         },
-        include: {
-        player: {
+        select: {
+            first: true,
+            second: true,
+            third: true,
+            player: {
             select: {
-            playerName: true,
-            totalPoints: true,
-            eliminated: true,
+                playerName: true,
+                totalPoints: true,
+                eliminated: true,
             },
-        },
+            },
         },
     });
 
