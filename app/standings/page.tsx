@@ -14,7 +14,7 @@ async function getStandings(): Promise<Standing[]> {
   const res = await fetch(`${process.env.PRODUCTION_URL}/api/standings-get/${CURRENT_SEASON}`, { cache: "no-store" });
   
   if (!res.ok) {
-    throw new Error("Failed to fetch standings");
+    throw new Error("Failed to fetch the standings for the current season.");
   }
 
   return res.json();
