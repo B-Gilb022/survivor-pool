@@ -34,7 +34,7 @@ export async function GET(req: NextRequest, context: { params: Promise<{ partici
         },
     });
 
-    const data = raw.map(entry => ({
+    const data = raw.map((entry) => ({
         playerName: entry.player.playerName,
         totalPoints: entry.player.totalPoints,
         eliminated: entry.player.eliminated,
