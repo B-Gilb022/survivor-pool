@@ -1,5 +1,5 @@
 
-import db from "@/lib/db/database";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(req: Request, { params }: { params: Promise<{ participantId: string }> }) {
     const { participantId } = await params;
@@ -14,21 +14,30 @@ export async function GET(req: Request, { params }: { params: Promise<{ particip
         );
     }
 
-    const data = db.prepare(
-        `SELECT 
-            Players.PlayerName,
-            Players.TotalPoints,
-            Players.Eliminated,
-            ParticipantsMapper.First,
-            ParticipantsMapper.Second,
-            ParticipantsMapper.Third
-        FROM ParticipantsMapper
-        LEFT JOIN Players
-            ON ParticipantsMapper.PlayerId = Players.PlayerId 
-        WHERE 
-            ParticipantsMapper.ParticipantId = ? 
-            AND ParticipantsMapper.Season = ?`,
-    ).all(participantIdNumber, season);
+    const raw = await prisma.participantsMapper.findMany({
+        where: {
+        participantId: participantIdNumber,
+        season: season,
+        },
+        include: {
+        player: {
+            select: {
+            playerName: true,
+            totalPoints: true,
+            eliminated: true,
+            },
+        },
+        },
+    });
 
-    return new Response(JSON.stringify(data));
+    const data = raw.map(entry => ({
+        playerName: entry.player.playerName,
+        totalPoints: entry.player.totalPoints,
+        eliminated: entry.player.eliminated,
+        first: entry.first,
+        second: entry.second,
+        third: entry.third,
+    }));
+
+    return Response.json(data);
 }

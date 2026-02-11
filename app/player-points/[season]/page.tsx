@@ -2,19 +2,19 @@ import Link from "next/link";
 import BackButton from "@/app/components/BackButton";
 
 type PlayerPoint = {
-    PlayerId: number;
-    PlayerName: string;
-    RemainInTheGamePts: number;
-    FoundAdvantagePts: number;
-    UsedAdvantagePts: number;
-    ShotInTheDarkPts: number;
-    IndividualRewardPts: number;
-    ConfessionalPts: number;
-    IndividualImmunityPts: number;
-    TribalImmunityPts: number;
-    TribalRewardPts: number;
-    TotalPoints: number;
-    Eliminated: boolean;
+    playerId: number;
+    playerName: string;
+    remainInTheGamePts: number;
+    foundAdvantagePts: number;
+    usedAdvantagePts: number;
+    shotInTheDarkPts: number;
+    individualRewardPts: number;
+    confessionalPts: number;
+    individualImmunityPts: number;
+    tribalImmunityPts: number;
+    tribalRewardPts: number;
+    totalPoints: number;
+    eliminated: boolean;
 };
 
 export default async function PlayerPointsPage({ params }: { params: Promise<{ season: string }> }) {
@@ -50,18 +50,18 @@ export default async function PlayerPointsPage({ params }: { params: Promise<{ s
                 </thead>
                 <tbody>
                     {playerPoints.map((player) => (
-                        <tr key={player.PlayerId} className={`border-b border-gray-300 ${player.Eliminated ? 'bg-red-600/60' : ''}`}>
-                            <td className="border border-gray-300 px-4 py-2">{player.PlayerName}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.RemainInTheGamePts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.FoundAdvantagePts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.UsedAdvantagePts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.ShotInTheDarkPts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.IndividualRewardPts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.ConfessionalPts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.IndividualImmunityPts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.TribalImmunityPts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.TribalRewardPts}</td>
-                            <td className="border border-gray-300 px-4 py-2">{player.TotalPoints}</td>
+                        <tr key={player.playerId} className={`border-b border-gray-300 ${player.eliminated ? 'bg-red-600/60' : ''}`}>
+                            <td className="border border-gray-300 px-4 py-2">{player.playerName}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.remainInTheGamePts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.foundAdvantagePts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.usedAdvantagePts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.shotInTheDarkPts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.individualImmunityPts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.confessionalPts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.individualImmunityPts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.tribalImmunityPts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.tribalRewardPts}</td>
+                            <td className="border border-gray-300 px-4 py-2">{player.totalPoints}</td>
                         </tr>
                     ))}
                 </tbody>

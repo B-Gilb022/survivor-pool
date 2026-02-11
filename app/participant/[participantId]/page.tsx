@@ -6,13 +6,13 @@ interface ParticipantPageProps {
 }
 
 type Player = {
-  PlayerId: number;
-  PlayerName: string;
-  TotalPoints: number;
-  Eliminated: boolean;
-  First: boolean;
-  Second: boolean;
-  Third: boolean;
+  playerId: number;
+  playerName: string;
+  totalPoints: number;
+  eliminated: boolean;
+  first: boolean;
+  second: boolean;
+  third: boolean;
 };
 
 export default async function ParticipantPage({ params, searchParams }: ParticipantPageProps) {
@@ -45,12 +45,12 @@ export default async function ParticipantPage({ params, searchParams }: Particip
                     </thead>
                     <tbody>
                         {data.map((player) => (
-                            <tr className={`border-b ${player.Eliminated ? 'bg-red-600/60' : ''}`}>
+                            <tr className={`border-b ${player.eliminated ? 'bg-red-600/60' : ''}`}>
                                 <td className="px-8 py-2">
-                                    {player.First ? "🥇" : player.Second ? "🥈" : player.Third ? "🥉" : ""}
+                                    {player.first ? "🥇" : player.second ? "🥈" : player.third ? "🥉" : ""}
                                 </td>
-                                <td className="px-8 py-2">{player.PlayerName}</td>
-                                <td className="px-8 py-2">{player.TotalPoints}</td>
+                                <td className="px-8 py-2">{player.playerName}</td>
+                                <td className="px-8 py-2">{player.totalPoints}</td>
                             </tr>
                         ))}
                     </tbody>

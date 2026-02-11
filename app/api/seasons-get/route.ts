@@ -1,20 +1,20 @@
-import db from "@/lib/db/database";
-import { initializeDatabase } from "@/lib/db/init";
+import { prisma } from "@/lib/prisma";
 
 type SeasonRow = {
   Season: number;
 };
 
 export async function GET() {
-    initializeDatabase();
 
-    const seasons = db.prepare(`
-        SELECT DISTINCT Season
-        FROM ParticipantsMapper
-        ORDER BY Season DESC
-    `).all() as SeasonRow[];
+    const seasons = await prisma.participantsMapper.findMany({
+    distinct: ["season"],
+    orderBy: {
+        season: "desc",
+    },
+    select: {
+        season: true,
+    },
+    });
 
-    return Response.json(
-        seasons.map(s => s.Season)
-    );
+    return Response.json(seasons.map(s => s.season));
 }
