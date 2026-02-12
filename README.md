@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+You can access the webpage here: https://survivor-pool-three.vercel.app
 
-## Getting Started
+## Tech Stack
 
-First, run the development server:
+Frontend:
+ - Next.js
+ - React
+ - Typescript
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Backend:
+ - Next.js API Routes
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Database:
+ - PostgreSQL
+ - Prisma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Deployment: 
+ - Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## About the App
 
-## Learn More
+Each year, my family runs a fantasy pool based on the currently airing season of the reality competition show Survivor. We each pick a certain number of players and get points based on how they perform in the show. Previously, the points and results for each season were contained in a Google Sheet, which created many issues and inconveniences. With this new app, all of the data can be contained in one place and is much easier for other members competing in the pool to access.
 
-To learn more about Next.js, take a look at the following resources:
+The web page contains the following pages:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- A Front Page allowing users to select either the current (or most recent) season data, or select previous season's data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The standings page displaying the results of the pool for a given season.
 
-## Deploy on Vercel
+- A participant page showing the Survivor players that each participant in the pool chose.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- A player point breakdown page showing the points received by each Survivor player in each category.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Planned Updates
+
+- Utilize the Open Router API to create an automated system for updating points.
+- Create a simulation of the rest of the season to determine a potential percentage that a given participant has to win.
