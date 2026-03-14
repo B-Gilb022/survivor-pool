@@ -15,7 +15,7 @@ type PageProps = {
   };
 };
 
-const CURRENT_SEASON = 49;
+const CURRENT_SEASON = 50;
 
 export default async function Standings({ params }: PageProps) {
   const { season } = await params;

@@ -649,35 +649,213 @@ async function seedDatabase() {
   });
 
   // SEASON 50 - Add here
+  
+  const players_s50 = [
+      {name : "Colby", tribe: "Vatu", season: 50, points: 42, eliminated: false},
+      {name : "Genevieve", tribe: "Vatu", season: 50, points: 54, eliminated: false},
+      {name : "Rizo", tribe: "Vatu", season: 50, points: 42, eliminated: false},
+      {name : "Angelina", tribe: "Vatu", season: 50, points: 35, eliminated: false},
+      {name : "Q", tribe: "Vatu", season: 50, points: 43, eliminated: true},
+      {name : "Stephanie", tribe: "Vatu", season: 50, points: 38, eliminated: false},
+      {name : "Kyle", tribe: "Vatu", season: 50, points: 14, eliminated: true},
+      {name : "Aubry", tribe: "Vatu", season: 50, points: 43, eliminated: false},
+      {name : "Joe", tribe: "Cila", season: 50, points: 40, eliminated: false},
+      {name : "Savannah", tribe: "Cila", season: 50, points: 31, eliminated: true},
+      {name : "Christian", tribe: "Cila", season: 50, points: 53, eliminated: false},
+      {name : "Cirie", tribe: "Cila", season: 50, points: 41, eliminated: false},
+      {name : "Ozzy", tribe: "Cila", season: 50, points: 53, eliminated: false},
+      {name : "Emily", tribe: "Cila", season: 50, points: 38, eliminated: false},
+      {name : "Rick", tribe: "Cila", season: 50, points: 44, eliminated: false},
+      {name : "Jenna", tribe: "Cila", season: 50, points: 4, eliminated: true},
+      {name : "Jonathan", tribe: "Kalo", season: 50, points: 47, eliminated: false},
+      {name : "Dee", tribe: "Kalo", season: 50, points: 43, eliminated: false},
+      {name : "Mike", tribe: "Kalo", season: 50, points: 47, eliminated: false},
+      {name : "Kamilla", tribe: "Kalo", season: 50, points: 43, eliminated: false},
+      {name : "Charlie", tribe: "Kalo", season: 50, points: 47, eliminated: false},
+      {name : "Tiffany", tribe: "Kalo", season: 50, points: 42, eliminated: false},
+      {name : "Coach", tribe: "Kalo", season: 50, points: 51, eliminated: false},
+      {name : "Chrissy", tribe: "Kalo", season: 50, points: 44, eliminated: false}
+  ];
 
-  /*
-      const players_s50 = [
-        {name : "Colby", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Genevieve", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Rizo", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Angelina", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Q", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Stephanie", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Kyle", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Aubry", tribe: "Vatu", season: 50, points: 0, eliminated: 0},
-        {name : "Joe", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Savannah", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Christian", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Cirie", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Ozzy", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Emily", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Rick", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Jenna", tribe: "Cila", season: 50, points: 0, eliminated: 0},
-        {name : "Jonathan", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Dee", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Mike", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Kamilla", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Charlie", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Tiffany", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Coach", tribe: "Kalo", season: 50, points: 0, eliminated: 0},
-        {name : "Chrissy", tribe: "Kalo", season: 50, points: 0, eliminated: 0}
-    ];
-  */
+  const players50 = await Promise.all(
+    players_s50.map(async (player) => {
+      return prisma.player.create({
+        data: {
+          playerName: player.name,
+          tribeName: player.tribe,
+          season: player.season,
+          totalPoints: player.points,
+          eliminated: player.eliminated,
+        },
+      });
+    })
+  );
+
+  const pointsData50 = [
+    { playerId: players50.find(p => p.playerName === "Colby" && p.season === 50)!.playerId, playerName: "Colby", season: 50, points: [4, 0, 0, 0, 0, 7, 0, 3, 0] },
+    { playerId: players50.find(p => p.playerName === "Genevieve" && p.season === 50)!.playerId, playerName: "Genevieve", season: 50, points: [4, 1, 0, 0, 0, 14, 0, 3, 0] },
+    { playerId: players50.find(p => p.playerName === "Rizo" && p.season === 50)!.playerId, playerName: "Rizo", season: 50, points: [4, 0, 0, 0, 0, 7, 0, 3, 0] },
+    { playerId: players50.find(p => p.playerName === "Angelina" && p.season === 50)!.playerId, playerName: "Angelina", season: 50, points: [4, 0, 0, 0, 0, 5, 0, 2, 0] },
+    { playerId: players50.find(p => p.playerName === "Q" && p.season === 50)!.playerId , playerName:"Q", season:50 , points: [3, 0, 0, 0, 0, 18, 0, 2, 0] },
+    { playerId: players50.find(p => p.playerName === "Stephanie" && p.season === 50)!.playerId , playerName:"Stephanie", season: 50, points: [4, 0, 0, 0, 0, 8, 0, 2, 0] },
+    { playerId: players50.find(p => p.playerName === "Kyle" && p.season === 50)!.playerId, playerName: "Kristina", season: 50, points: [1, 0, 0, 0, 0, 4, 0, 1, 0] },
+    { playerId: players50.find(p => p.playerName === "Aubry" && p.season === 50)!.playerId, playerName: "Aubry", season: 50, points: [4, 0, 0, 0, 0, 8, 0, 3, 0] },
+    { playerId: players50.find(p => p.playerName === "Joe" && p.season === 50)!.playerId, playerName: "Joe", season: 50, points: [4, 0, 0, 0, 0, 10, 0, 1, 1] },
+    { playerId: players50.find(p => p.playerName === "Savannah" && p.season === 50)!.playerId , playerName:"Savannah", season: 50, points: [2, 1, 0, 0, 0, 11, 0, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Christian" && p.season === 50)!.playerId , playerName:"Christian", season: 50, points: [4, 1, 0, 0, 0, 23, 0, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Cirie" && p.season === 50)!.playerId , playerName:"Cirie", season: 50, points: [4, 0, 0, 0, 0, 11, 0, 1, 1] },
+    { playerId: players50.find(p => p.playerName === "Ozzy" && p.season === 50)!.playerId , playerName:"Ozzy", season: 50, points: [4, 1, 0, 0, 0, 23, 0, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Emily" && p.season === 50)!.playerId , playerName:"Emily", season: 50, points: [4, 0, 0, 0, 0, 13, 0, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Rick" && p.season === 50)!.playerId, playerName:"Rick", season: 50, points: [4, 0, 0, 0, 0, 14, 0, 1, 1] },
+    { playerId: players50.find(p => p.playerName === "Jenna" && p.season === 50)!.playerId , playerName:"Jenna", season: 50, points: [0, 0, 0, 0, 0, 4, 0, 0, 0] },
+    { playerId: players50.find(p => p.playerName === "Jonathan" && p.season === 50)!.playerId , playerName:"Jonathan", season: 50, points:[4, 0, 0, 0, 0, 7, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Dee" && p.season === 50)!.playerId , playerName:"Dee", season: 50, points:[4, 0, 0, 0, 0, 3, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Mike" && p.season === 50)!.playerId , playerName:"Mike", season: 50, points: [4, 0, 0, 0, 0, 12, 0, 2, 1] },
+    { playerId: players50.find(p => p.playerName === "Kamilla" && p.season === 50)!.playerId , playerName:"Kamilla", season: 50, points:[4, 0, 0, 0, 0, 3, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Charlie" && p.season === 50)!.playerId , playerName:"Charlie", season: 50, points:[4, 0, 0, 0, 0, 7, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Tiffany" && p.season === 50)!.playerId , playerName:"Tiffany", season: 50, points: [4, 0, 0, 0, 0, 2, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Coach" && p.season === 50)!.playerId , playerName:"Coach", season: 50, points:[4, 0, 0, 0, 0, 11, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Chrissy" && p.season === 50)!.playerId , playerName:"Chrissy", season: 50, points:[4, 0, 0, 0, 0, 4, 0, 3, 1] },
+   ];
+
+  await Promise.all(
+    pointsData50.map(async (data) => {
+      return prisma.playerPoints.create({
+        data: {
+          playerId: data.playerId,
+          playerName: data.playerName,
+          season: data.season,
+          remainInTheGamePts: data.points[0],
+          foundAdvantagePts: data.points[1],
+          usedAdvantagePts: data.points[2],
+          shotInTheDarkPts: data.points[3],
+          individualRewardPts: data.points[4],
+          confessionalPts: data.points[5],
+          individualImmunityPts: data.points[6],
+          tribalImmunityPts: data.points[7],
+          tribalRewardPts: data.points[8],
+        }
+      });
+    })
+  );
+
+  const participantPicks50 = [
+    {
+      participant: "Joanne",
+      picks: [
+        ["Christian", 1, 0, 0],
+        ["Ozzy", 0, 1, 0],
+        ["Stephanie", 0, 0, 1],
+        ["Rizo", 0, 0, 0],
+        ["Kamilla", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Dan",
+      picks: [
+        ["Christian", 1, 0, 0],
+        ["Aubry", 0, 1, 0],
+        ["Emily", 0, 0, 1],
+        ["Ozzy", 0, 0, 0],
+        ["Joe", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Ivy",
+      picks: [
+        ["Coach", 1, 0, 0],
+        ["Genevieve", 0, 1, 0],
+        ["Christian", 0, 0, 1],
+        ["Joe", 0, 0, 0],
+        ["Rizo", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Geoff",
+      picks: [
+        ["Rizo", 1, 0, 0],
+        ["Coach", 0, 1, 0],
+        ["Jonathan", 0, 0, 1],
+        ["Christian", 0, 0, 0],
+        ["Stephanie", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Ben",
+      picks: [
+        ["Christian", 1, 0, 0],
+        ["Rick", 0, 1, 0],
+        ["Genevieve", 0, 0, 1],
+        ["Stephanie", 0, 0, 0],
+        ["Emily", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Cam",
+      picks: [
+        ["Christian", 1, 0, 0],
+        ["Rick", 0, 1, 0],
+        ["Genevieve", 0, 0, 1],
+        ["Stephanie", 0, 0, 0],
+        ["Aubry", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Nanny",
+      picks: [
+        ["Rizo", 1, 0, 0],
+        ["Ozzy", 0, 1, 0],
+        ["Aubry", 0, 0, 1],
+        ["Colby", 0, 0, 0],
+        ["Emily", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Papa",
+      picks: [
+        ["Mike", 1, 0, 0],
+        ["Chrissy", 0, 1, 0],
+        ["Colby", 0, 0, 1],
+        ["Charlie", 0, 0, 0],
+        ["Savannah", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Cal",
+      picks: [
+        ["Aubry", 1, 0, 0],
+        ["Christian", 0, 1, 0],
+        ["Genevieve", 0, 0, 1],
+        ["Angelina", 0, 0, 0],
+        ["Q", 0, 0, 0],
+      ],
+    },
+    {
+      participant: "Cara",
+      picks: [
+        ["Christian", 1, 0, 0],
+        ["Aubry", 0, 1, 0],
+        ["Genevieve", 0, 0, 1],
+        ["Charlie", 0, 0, 0],
+        ["Colby", 0, 0, 0],
+      ],
+    },
+  ];
+
+  const mappings50 = participantPicks50.flatMap(({ participant, picks }) =>
+    picks.map(([playerName, first, second, third]) => ({
+      participantId: participants.find(p => p.participantName === participant)!.participantId,
+      playerId: players50.find(p => p.playerName === playerName && p.season === 50)!.playerId,
+      season: 50,
+      first: Boolean(first),
+      second: Boolean(second),
+      third: Boolean(third),
+    }))
+  );
+
+  await prisma.participantsMapper.createMany({
+    data: mappings50,
+  });
 
 }
 

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const CURRENT_SEASON = 49;
+const CURRENT_SEASON = 50;
 
 export default function Home() {
   const router = useRouter();

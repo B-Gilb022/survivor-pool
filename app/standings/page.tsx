@@ -8,7 +8,7 @@ type Standing = {
   RemainingPlayers: string;
 };
 
-const CURRENT_SEASON = 49;
+const CURRENT_SEASON = 50;
 
 async function getStandings(): Promise<Standing[]> {
   const res = await fetch(`${process.env.PRODUCTION_URL}/api/standings-get/${CURRENT_SEASON}`, { cache: "no-store" });
