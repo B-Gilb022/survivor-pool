@@ -670,7 +670,7 @@ async function seedDatabase() {
       {name : "Jonathan", tribe: "Kalo", season: 50, points: 96, eliminated: false},
       {name : "Dee", tribe: "Kalo", season: 50, points: 96, eliminated: false},
       {name : "Mike", tribe: "Kalo", season: 50, points: 52, eliminated: true}, //OUT
-      {name : "Kamilla", tribe: "Kalo", season: 50, points: 77, eliminated: false}, //OUT
+      {name : "Kamilla", tribe: "Kalo", season: 50, points: 77, eliminated: true}, //OUT
       {name : "Charlie", tribe: "Kalo", season: 50, points: 65, eliminated: true}, //OUT
       {name : "Tiffany", tribe: "Kalo", season: 50, points: 93, eliminated: false},
       {name : "Coach", tribe: "Kalo", season: 50, points: 96, eliminated: false},
