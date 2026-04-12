@@ -653,28 +653,28 @@ async function seedDatabase() {
   const players_s50 = [
       {name : "Colby", tribe: "Vatu", season: 50, points: 83, eliminated: true}, //OUT
       {name : "Genevieve", tribe: "Vatu", season: 50, points: 96, eliminated: true}, //OUT
-      {name : "Rizo", tribe: "Vatu", season: 50, points: 91, eliminated: false},
+      {name : "Rizo", tribe: "Vatu", season: 50, points: 103, eliminated: false},
       {name : "Angelina", tribe: "Vatu", season: 50, points: 44, eliminated: true}, //OUT
       {name : "Q", tribe: "Vatu", season: 50, points: 43, eliminated: true}, //OUT
-      {name : "Stephanie", tribe: "Vatu", season: 50, points: 89, eliminated: false},
+      {name : "Stephanie", tribe: "Vatu", season: 50, points: 100, eliminated: false},
       {name : "Kyle", tribe: "Vatu", season: 50, points: 14, eliminated: true}, //OUT
-      {name : "Aubry", tribe: "Vatu", season: 50, points: 91, eliminated: false},
-      {name : "Joe", tribe: "Cila", season: 50, points: 84, eliminated: false},
+      {name : "Aubry", tribe: "Vatu", season: 50, points: 99, eliminated: false},
+      {name : "Joe", tribe: "Cila", season: 50, points: 94, eliminated: false},
       {name : "Savannah", tribe: "Cila", season: 50, points: 31, eliminated: true}, //OUT
-      {name : "Christian", tribe: "Cila", season: 50, points: 110, eliminated: false},
-      {name : "Cirie", tribe: "Cila", season: 50, points: 82, eliminated: false},
-      {name : "Ozzy", tribe: "Cila", season: 50, points: 102, eliminated: false},
-      {name : "Emily", tribe: "Cila", season: 50, points: 76, eliminated: false},
-      {name : "Rick", tribe: "Cila", season: 50, points: 88, eliminated: false},
+      {name : "Christian", tribe: "Cila", season: 50, points: 122, eliminated: false},
+      {name : "Cirie", tribe: "Cila", season: 50, points: 89, eliminated: false},
+      {name : "Ozzy", tribe: "Cila", season: 50, points: 125, eliminated: false},
+      {name : "Emily", tribe: "Cila", season: 50, points: 90, eliminated: false},
+      {name : "Rick", tribe: "Cila", season: 50, points: 102, eliminated: false},
       {name : "Jenna", tribe: "Cila", season: 50, points: 4, eliminated: true}, //OUT
-      {name : "Jonathan", tribe: "Kalo", season: 50, points: 96, eliminated: false},
-      {name : "Dee", tribe: "Kalo", season: 50, points: 96, eliminated: false},
+      {name : "Jonathan", tribe: "Kalo", season: 50, points: 103, eliminated: false},
+      {name : "Dee", tribe: "Kalo", season: 50, points: 108, eliminated: true}, //OUT
       {name : "Mike", tribe: "Kalo", season: 50, points: 52, eliminated: true}, //OUT
       {name : "Kamilla", tribe: "Kalo", season: 50, points: 77, eliminated: true}, //OUT
       {name : "Charlie", tribe: "Kalo", season: 50, points: 65, eliminated: true}, //OUT
-      {name : "Tiffany", tribe: "Kalo", season: 50, points: 93, eliminated: false},
-      {name : "Coach", tribe: "Kalo", season: 50, points: 96, eliminated: false},
-      {name : "Chrissy", tribe: "Kalo", season: 50, points: 92, eliminated: false}
+      {name : "Tiffany", tribe: "Kalo", season: 50, points: 101, eliminated: false},
+      {name : "Coach", tribe: "Kalo", season: 50, points: 110, eliminated: false},
+      {name : "Chrissy", tribe: "Kalo", season: 50, points: 98, eliminated: false}
   ];
 
   const players50 = await Promise.all(
@@ -694,28 +694,28 @@ async function seedDatabase() {
   const pointsData50 = [
     { playerId: players50.find(p => p.playerName === "Colby" && p.season === 50)!.playerId, playerName: "Colby", season: 50, points: [9, 0, 0, 0, 0, 13, 0, 5, 0] }, //OUT
     { playerId: players50.find(p => p.playerName === "Genevieve" && p.season === 50)!.playerId, playerName: "Genevieve", season: 50, points: [8, 2, 0, 0, 0, 21, 0, 5, 0] }, //OUT
-    { playerId: players50.find(p => p.playerName === "Rizo" && p.season === 50)!.playerId, playerName: "Rizo", season: 50, points: [10, 0, 0, 0, 0, 21, 0, 4, 0] },
+    { playerId: players50.find(p => p.playerName === "Rizo" && p.season === 50)!.playerId, playerName: "Rizo", season: 50, points: [11, 0, 0, 0, 0, 28, 0, 4, 0] },
     { playerId: players50.find(p => p.playerName === "Angelina" && p.season === 50)!.playerId, playerName: "Angelina", season: 50, points: [5, 0, 0, 0, 0, 9, 0, 2, 0] }, //OUT
     { playerId: players50.find(p => p.playerName === "Q" && p.season === 50)!.playerId , playerName:"Q", season:50 , points: [3, 0, 0, 0, 0, 18, 0, 2, 0] }, //OUT
-    { playerId: players50.find(p => p.playerName === "Stephanie" && p.season === 50)!.playerId , playerName:"Stephanie", season: 50, points: [10, 0, 0, 0, 1, 14, 1, 2, 0] },
+    { playerId: players50.find(p => p.playerName === "Stephanie" && p.season === 50)!.playerId , playerName:"Stephanie", season: 50, points: [11, 1, 0, 0, 2, 20, 1, 2, 0] },
     { playerId: players50.find(p => p.playerName === "Kyle" && p.season === 50)!.playerId, playerName: "Kristina", season: 50, points: [1, 0, 0, 0, 0, 4, 0, 1, 0] }, //OUT
-    { playerId: players50.find(p => p.playerName === "Aubry" && p.season === 50)!.playerId, playerName: "Aubry", season: 50, points: [10, 0, 0, 0, 0, 16, 0, 5, 0] },
-    { playerId: players50.find(p => p.playerName === "Joe" && p.season === 50)!.playerId, playerName: "Joe", season: 50, points: [10, 0, 0, 0, 0, 14, 0, 3, 1] },
+    { playerId: players50.find(p => p.playerName === "Aubry" && p.season === 50)!.playerId, playerName: "Aubry", season: 50, points: [11, 0, 0, 0, 0, 19, 0, 5, 0] },
+    { playerId: players50.find(p => p.playerName === "Joe" && p.season === 50)!.playerId, playerName: "Joe", season: 50, points: [11, 0, 0, 0, 1, 14, 0, 3, 1] },
     { playerId: players50.find(p => p.playerName === "Savannah" && p.season === 50)!.playerId , playerName:"Savannah", season: 50, points: [2, 1, 0, 0, 0, 11, 0, 0, 1] }, //OUT
-    { playerId: players50.find(p => p.playerName === "Christian" && p.season === 50)!.playerId , playerName:"Christian", season: 50, points: [10, 1, 0, 0, 0, 40, 1, 0, 1] },
-    { playerId: players50.find(p => p.playerName === "Cirie" && p.season === 50)!.playerId , playerName:"Cirie", season: 50, points: [10, 0, 0, 0, 0, 17, 0, 2, 1] },
-    { playerId: players50.find(p => p.playerName === "Ozzy" && p.season === 50)!.playerId , playerName:"Ozzy", season: 50, points: [10, 1, 0, 0, 0, 42, 0, 0, 1] },
-    { playerId: players50.find(p => p.playerName === "Emily" && p.season === 50)!.playerId , playerName:"Emily", season: 50, points: [10, 0, 0, 0, 0, 21, 0, 0, 1] },
-    { playerId: players50.find(p => p.playerName === "Rick" && p.season === 50)!.playerId, playerName:"Rick", season: 50, points: [10, 0, 0, 0, 0, 23, 0, 2, 1] },
+    { playerId: players50.find(p => p.playerName === "Christian" && p.season === 50)!.playerId , playerName:"Christian", season: 50, points: [11, 1, 0, 0, 1, 42, 1, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Cirie" && p.season === 50)!.playerId , playerName:"Cirie", season: 50, points: [11, 0, 0, 0, 0, 19, 0, 2, 1] },
+    { playerId: players50.find(p => p.playerName === "Ozzy" && p.season === 50)!.playerId , playerName:"Ozzy", season: 50, points: [11, 1, 0, 0, 1, 45, 1, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Emily" && p.season === 50)!.playerId , playerName:"Emily", season: 50, points: [11, 0, 0, 0, 1, 25, 0, 0, 1] },
+    { playerId: players50.find(p => p.playerName === "Rick" && p.season === 50)!.playerId, playerName:"Rick", season: 50, points: [11, 0, 0, 0, 1, 27, 0, 2, 1] },
     { playerId: players50.find(p => p.playerName === "Jenna" && p.season === 50)!.playerId , playerName:"Jenna", season: 50, points: [0, 0, 0, 0, 0, 4, 0, 0, 0] }, //OUT
-    { playerId: players50.find(p => p.playerName === "Jonathan" && p.season === 50)!.playerId , playerName:"Jonathan", season: 50, points:[10, 0, 0, 0, 1, 16, 0, 4, 1] },
-    { playerId: players50.find(p => p.playerName === "Dee" && p.season === 50)!.playerId , playerName:"Dee", season: 50, points:[10, 0, 0, 0, 0, 11, 1, 4, 1] },
+    { playerId: players50.find(p => p.playerName === "Jonathan" && p.season === 50)!.playerId , playerName:"Jonathan", season: 50, points:[11, 0, 0, 0, 1, 18, 0, 4, 1] },
+    { playerId: players50.find(p => p.playerName === "Dee" && p.season === 50)!.playerId , playerName:"Dee", season: 50, points:[10, 0, 0, 0, 1, 18, 1, 4, 1] }, //OUT
     { playerId: players50.find(p => p.playerName === "Mike" && p.season === 50)!.playerId , playerName:"Mike", season: 50, points: [4, 0, 0, 0, 0, 17, 0, 2, 1] }, //OUT
     { playerId: players50.find(p => p.playerName === "Kamilla" && p.season === 50)!.playerId , playerName:"Kamilla", season: 50, points:[7, 0, 0, 0, 1, 12, 0, 4, 1] }, //OUT
     { playerId: players50.find(p => p.playerName === "Charlie" && p.season === 50)!.playerId , playerName:"Charlie", season: 50, points:[6, 0, 0, 0, 0, 10, 0, 4, 1] }, //OUT
-    { playerId: players50.find(p => p.playerName === "Tiffany" && p.season === 50)!.playerId , playerName:"Tiffany", season: 50, points: [10, 0, 0, 0, 1, 8, 0, 5, 1] },
-    { playerId: players50.find(p => p.playerName === "Coach" && p.season === 50)!.playerId , playerName:"Coach", season: 50, points:[10, 0, 0, 0, 0, 16, 0, 5, 1] },
-    { playerId: players50.find(p => p.playerName === "Chrissy" && p.season === 50)!.playerId , playerName:"Chrissy", season: 50, points:[10, 0, 0, 0, 1, 7, 0, 5, 1] },
+    { playerId: players50.find(p => p.playerName === "Tiffany" && p.season === 50)!.playerId , playerName:"Tiffany", season: 50, points: [11, 0, 0, 0, 1, 11, 0, 5, 1] },
+    { playerId: players50.find(p => p.playerName === "Coach" && p.season === 50)!.playerId , playerName:"Coach", season: 50, points:[11, 0, 0, 0, 0, 25, 0, 5, 1] },
+    { playerId: players50.find(p => p.playerName === "Chrissy" && p.season === 50)!.playerId , playerName:"Chrissy", season: 50, points:[11, 0, 0, 0, 1, 8, 0, 5, 1] },
    ];
 
   await Promise.all(
@@ -748,6 +748,7 @@ async function seedDatabase() {
         ["Stephanie", 0, 0, 1],
         ["Rizo", 0, 0, 0],
         ["Kamilla", 0, 0, 0],
+        ["Dee", 0, 0, 0],
       ],
     },
     {
@@ -758,6 +759,7 @@ async function seedDatabase() {
         ["Emily", 0, 0, 1],
         ["Ozzy", 0, 0, 0],
         ["Joe", 0, 0, 0],
+        ["Dee", 0, 0, 0],
       ],
     },
     {
@@ -768,6 +770,7 @@ async function seedDatabase() {
         ["Christian", 0, 0, 1],
         ["Joe", 0, 0, 0],
         ["Rizo", 0, 0, 0],
+        ["Dee", 0, 0, 0],
       ],
     },
     {
@@ -778,6 +781,7 @@ async function seedDatabase() {
         ["Jonathan", 0, 0, 1],
         ["Christian", 0, 0, 0],
         ["Stephanie", 0, 0, 0],
+        ["Cirie", 0, 0, 0],
       ],
     },
     {
@@ -788,6 +792,7 @@ async function seedDatabase() {
         ["Genevieve", 0, 0, 1],
         ["Stephanie", 0, 0, 0],
         ["Emily", 0, 0, 0],
+        ["Ozzy", 0, 0, 0],
       ],
     },
     {
@@ -798,6 +803,7 @@ async function seedDatabase() {
         ["Genevieve", 0, 0, 1],
         ["Stephanie", 0, 0, 0],
         ["Aubry", 0, 0, 0],
+        ["Cirie", 0, 0, 0],
       ],
     },
     {
@@ -808,6 +814,7 @@ async function seedDatabase() {
         ["Aubry", 0, 0, 1],
         ["Colby", 0, 0, 0],
         ["Emily", 0, 0, 0],
+        ["Cirie", 0, 0, 0],
       ],
     },
     {
@@ -818,6 +825,7 @@ async function seedDatabase() {
         ["Colby", 0, 0, 1],
         ["Charlie", 0, 0, 0],
         ["Savannah", 0, 0, 0],
+        ["Rizo", 0, 0, 0],
       ],
     },
     {
@@ -828,6 +836,7 @@ async function seedDatabase() {
         ["Genevieve", 0, 0, 1],
         ["Angelina", 0, 0, 0],
         ["Q", 0, 0, 0],
+        ["Rizo", 0, 0, 0],
       ],
     },
     {
@@ -838,6 +847,7 @@ async function seedDatabase() {
         ["Genevieve", 0, 0, 1],
         ["Charlie", 0, 0, 0],
         ["Colby", 0, 0, 0],
+        ["Tiffany", 0, 0, 0],
       ],
     },
   ];
