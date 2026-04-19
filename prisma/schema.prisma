@@ -38,6 +38,7 @@ model ParticipantsMapper {
   first Boolean
   second Boolean
   third Boolean
+  bonus Boolean
 
   participant Participant @relation(fields: [participantId], references: [participantId])
   player Player @relation(fields: [playerId], references: [playerId])

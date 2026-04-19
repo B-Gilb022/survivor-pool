@@ -13,6 +13,7 @@ type Player = {
   first: boolean;
   second: boolean;
   third: boolean;
+  bonus: boolean;
 };
 
 export default async function ParticipantPage({ params, searchParams }: ParticipantPageProps) {
@@ -25,6 +26,8 @@ export default async function ParticipantPage({ params, searchParams }: Particip
     const res = await fetch(`${process.env.PRODUCTION_URL}/api/participant-players-get/${participantIdNumber}?season=${seasonNumber ?? ''}`, { cache: "no-store" });
 
     const data: Player[] = await res.json();
+
+    console.log("Raw data from database:", data[0]);
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
@@ -47,7 +50,7 @@ export default async function ParticipantPage({ params, searchParams }: Particip
                         {data.map((player) => (
                             <tr className={`border-b ${player.eliminated ? 'bg-red-600/60' : ''}`}>
                                 <td className="px-8 py-2">
-                                    {player.first ? "🥇" : player.second ? "🥈" : player.third ? "🥉" : ""}
+                                    {player.first ? "🥇" : player.second ? "🥈" : player.third ? "🥉" : player.bonus ? "➕" : ""}
                                 </td>
                                 <td className="px-8 py-2">{player.playerName}</td>
                                 <td className="px-8 py-2">{player.totalPoints}</td>

@@ -10,6 +10,7 @@ type Entry = {
   first: boolean;
   second: boolean;
   third: boolean;
+  bonus: boolean;
 };
 
 export async function GET(req: NextRequest, context: { params: Promise<{ participantId: string }> }) {
@@ -35,6 +36,7 @@ export async function GET(req: NextRequest, context: { params: Promise<{ partici
             first: true,
             second: true,
             third: true,
+            bonus: true,
             player: {
             select: {
                 playerName: true,
@@ -52,6 +54,7 @@ export async function GET(req: NextRequest, context: { params: Promise<{ partici
         first: entry.first,
         second: entry.second,
         third: entry.third,
+        bonus: entry.bonus,
     }));
 
     return Response.json(data);

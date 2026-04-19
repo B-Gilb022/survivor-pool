@@ -61,13 +61,14 @@ export async function GET(_: NextRequest, context: { params: Promise<{ season: s
     }>();
 
     for (const row of rows) {
-        const bonus =
+        const bonusPoints =
         (row.first && row.player.playerName === firstPlace ? 75 : 0) +
         (row.second && row.player.playerName === secondPlace ? 50 : 0) +
         (row.third && row.player.playerName === thirdPlace ? 50 : 0) +
         (row.first && [secondPlace, thirdPlace].includes(row.player.playerName) ? 30 : 0) +
         (row.second && [firstPlace, thirdPlace].includes(row.player.playerName) ? 30 : 0) +
-        (row.third && [firstPlace, secondPlace].includes(row.player.playerName) ? 30 : 0);
+        (row.third && [firstPlace, secondPlace].includes(row.player.playerName) ? 30 : 0) +
+        (row.bonus && [firstPlace, secondPlace, thirdPlace].includes(row.player.playerName) ? 20 : 0);
 
         const current = standingsMap.get(row.participantId) ?? {
         participantId: row.participantId,
@@ -77,7 +78,7 @@ export async function GET(_: NextRequest, context: { params: Promise<{ season: s
         totalPlayers: 0,
         };
 
-        current.totalPoints += row.player.totalPoints + bonus;
+        current.totalPoints += row.player.totalPoints + bonusPoints;
         current.totalPlayers += 1;
         if (!row.player.eliminated) current.remaining += 1;
 
