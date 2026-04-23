@@ -27,8 +27,6 @@ export default async function ParticipantPage({ params, searchParams }: Particip
 
     const data: Player[] = await res.json();
 
-    console.log("Raw data from database:", data[0]);
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
             <BackButton />
