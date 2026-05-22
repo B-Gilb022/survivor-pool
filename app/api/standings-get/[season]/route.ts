@@ -34,7 +34,12 @@ export async function GET(_: NextRequest, context: { params: Promise<{ season: s
         secondPlace = "Sophi"
         thirdPlace = "Sage"
     }
-
+    else if (seasonNumber === 50){
+        firstPlace = "Aubry"
+        secondPlace = "Jonathan"
+        thirdPlace = "Joe"
+    }
+    
     if (Number.isNaN(seasonNumber)) {
         return new Response(
             JSON.stringify({ error: "Invalid season parameter" }),
