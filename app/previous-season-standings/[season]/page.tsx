@@ -15,7 +15,7 @@ type PageProps = {
   };
 };
 
-const CURRENT_SEASON = 50;
+const CURRENT_SEASON = 51;
 
 export default async function Standings({ params }: PageProps) {
   const { season } = await params;
@@ -28,9 +28,10 @@ export default async function Standings({ params }: PageProps) {
 
   const standings: Standing[] = await standingRes.json();
   const seasons: number[] = await seasonsRes.json();
+  const previousSeasons = [...new Set([...seasons, seasonNumber])]
+    .filter((season) => season > 0 && season < CURRENT_SEASON)
+    .sort((a, b) => b - a);
 
-  
-  
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-800 text-white">
       <Image
@@ -74,7 +75,7 @@ export default async function Standings({ params }: PageProps) {
           </Link>
 
           <SeasonSelector
-            seasons={seasons.splice(seasons.indexOf(CURRENT_SEASON) + 1)}
+            seasons={previousSeasons}
             currentSeason={Number(season)}
           />
 
