@@ -23,7 +23,7 @@ export default async function Standings({ params }: PageProps) {
 
   const [standingRes, seasonsRes] = await Promise.all([
     fetch(`${process.env.PRODUCTION_URL}/api/standings-get/${seasonNumber}`, { cache: "no-store" }),
-    fetch(`${process.env.PRODUCTION_URL}/api/seasons-get`, { cache: "force-cache" })
+    fetch(`${process.env.PRODUCTION_URL}/api/seasons-get`, { cache: "no-store" })
   ]);
 
   const standings: Standing[] = await standingRes.json();
