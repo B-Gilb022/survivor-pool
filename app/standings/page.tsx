@@ -30,7 +30,7 @@ export default async function Standings() {
         alt="Survivor Logo"
         width={600}
         height={600}
-        className="absolute top-4 right-0 w-32 sm:w-40 md:w-48 lg:w-100 h-auto"
+        className="absolute top-4 right-0 w-48 h-auto"
         priority
       />
       <br>
